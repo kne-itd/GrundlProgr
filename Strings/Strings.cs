@@ -1,8 +1,8 @@
 ﻿using System;
 
-namespace Strings
+namespace GrundlProgrammering
 {
-    class Program
+    public class Strings
     {
         public static string AddSeparator(string input, string separator)
         {
@@ -71,18 +71,22 @@ namespace Strings
 
         public static string RevertWordsOrder(string input)
         {
-            char endChar = (char)input[input.Length - 1];
+            char endChar = input[input.Length - 1];
             char[] p = new char[1];
 
-                if (char.IsPunctuation(endChar))
-                {
-                    p[0] = endChar;
-                    input = input.TrimEnd(p);
-                }
+            if (char.IsPunctuation(endChar))
+            {
+                
+                p[0] = endChar;
+                input = input.TrimEnd(p);
+            }
             string[] words = input.Split(' ');
             Array.Reverse(words);
             string output = String.Join(' ', words);
-            output += p[0];
+            if (p[0] != default(char))
+            {
+                output += p[0];
+            }
             return output;
         }
 

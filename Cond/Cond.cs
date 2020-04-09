@@ -1,8 +1,8 @@
 ﻿using System;
 
-namespace Cond
+namespace GrundlProgrammering
 {
-    class Program
+    public class Cond
     {
 
         public static int AbsoluteValue (int a)
@@ -17,7 +17,7 @@ namespace Cond
         public static int DivisibleBy2Or3(int a, int b)
         {
             if (a % 2 == 0 && b % 2 == 0 ||
-                b % 3 == 0 && b % 3 == 0)
+                a % 3 == 0 && b % 3 == 0)
             {
                 return a * b;
             }
@@ -63,7 +63,7 @@ namespace Cond
             return a[0] <= a[1] && a[1] <= a[2];
         }
 
-        public static string PositiveNegativeOrZero(int a)
+        public static string PositiveNegativeOrZero(double a)
         {
             if (a < 0 )
             {

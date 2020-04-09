@@ -1,8 +1,8 @@
 ﻿using System;
 
-namespace Loop
+namespace GrundlProgrammering
 {
-    class Program
+    public class Loop
     {
         public static string MultiplicationTable()
         {
@@ -131,6 +131,11 @@ namespace Loop
 
         public static string FullSequenceOfLetters(string letters)
         {
+            // Check for sequence
+            if (letters[0] > letters[1])
+            {
+                throw new Exception("Wrong sequence");
+            }
             string output = string.Empty;
             for (int i = letters[0], j = 0; i <= letters[1]; i++, j++)
             {

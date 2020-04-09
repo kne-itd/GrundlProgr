@@ -1,8 +1,9 @@
 ﻿using System;
+using System.Data;
 
-namespace Calculator
+namespace GrundlProgrammering
 {
-    class Program
+    public class Calculator
     {
         public static double Add(double a, double b)
         {
@@ -27,32 +28,39 @@ namespace Calculator
             }
             return a / b;
         }
+        public static double CalcWithPrecedensRules(string task)
+        {
+            double result = Convert.ToDouble(new DataTable().Compute(task, null));
+            return result;
+        }
         /// <summary>
         /// This method calculates the result of the input in
-        /// accordance withe the mathematical precedense rules:
+        /// accordance with the mathematical precedense rules:
         /// BODMAS:
         ///     brackets, order, division/multiplication, addition/subtraction
         /// </summary>
         /// <param name="task"></param>
         /// <returns></returns>
-        public static double CalcWithPrecedensRules(string task)
+        public static double outdated_CalcWithPrecedensRules(string task)
         {
             int startBracketPosition = 0;
             int closingBracketPosition = 0;
             string subTask = string.Empty;
             int subTaskLength = 0;
             int startPosition = 0;
-            
+
+            int debugCounter = 0;
             while (closingBracketPosition > -1)
             {
+                debugCounter++;
                 closingBracketPosition = task.IndexOf(")", startPosition, task.Length);
                 if (closingBracketPosition > 0)
                 {
                     startBracketPosition = task.LastIndexOf("(", closingBracketPosition, closingBracketPosition);
                     subTaskLength = closingBracketPosition - startBracketPosition;
-                    subTask = task.Substring(startBracketPosition, subTaskLength + 1); // includes parathesis
+                    subTask = task.Substring(startBracketPosition, subTaskLength + 1); // includes paranthesis
                     double temp = Calc(subTask.Trim(new char[] { '(', ')' }));
-                    Console.WriteLine(temp);
+                    //Console.WriteLine($"Parantes # {debugCounter}: " + temp);
                     task = task.Replace(subTask, temp.ToString());
                 }   
             }
@@ -78,7 +86,10 @@ namespace Calculator
             }
             string[] temp = task.Split(possibleOperators);
             double[] dbls = Array.ConvertAll(temp, Double.Parse);
+            char[] oprts = operators.ToCharArray();
             double result = dbls[0];
+            
+            
             for (int i = 1; i < dbls.Length; i++)
             {
                 char action = operators[i - 1];
@@ -113,14 +124,15 @@ namespace Calculator
 
             //string task = Console.ReadLine();
             //string task = "2+3*4/0-3,5";
-            string task = "2+(3*4+(3*4))+0-3,5/(2*2)";
+            string task = "2+(3*4+(3*4))+0-3.5/(2*2)";
             Console.WriteLine(task);
             Console.WriteLine("*********************************************'");
-            Console.WriteLine(CalcWithPrecedensRules(task));
+          //  Console.WriteLine(CalcWithPrecedensRules(task));
             Console.WriteLine("*********************************************'");
             try
             {
-            //    Console.WriteLine(CalcWithPrecedensRules(task));
+                Console.WriteLine("######");
+                Console.WriteLine(CalcWithPrecedensRules(task));
             } catch (Exception e)
             {
                 Console.WriteLine(e.Message);

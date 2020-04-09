@@ -2,20 +2,20 @@
 
 namespace GrundlProgrammering
 {
-    class Program
+    public  class Basic
     {
         public static int AddAndMultiply(int a, int b, int c)
         {
             return (a + b) * c;
         }
 
-        public static string CtoF(float degreesCelsius)
+        public static string CtoF(double degreesCelsius)
         {
             if (degreesCelsius < -271.15)
             {
                 return "Temperature below absolute zero";
             }
-            float degreesFahrenheit = (degreesCelsius * 9 / 5) + 32;
+            double degreesFahrenheit = (degreesCelsius * 9 / 5) + 32;
             return $"T = {degreesFahrenheit}F"; // String interpolation
         }
 
@@ -32,7 +32,7 @@ namespace GrundlProgrammering
                 div = d.ToString();
             } 
             
-            return $"{sum} {diff} {multi}, {div}";
+            return $"{sum}, {diff}, {multi}, {div}";
         }
 
         public static bool IsResultTheSame(int a, int b)
@@ -45,7 +45,7 @@ namespace GrundlProgrammering
             return a % b % c;
         }
 
-        public static int Cube(int a)
+        public static double Cube(double a)
         {
             return a * a * a;
         }
@@ -72,8 +72,8 @@ namespace GrundlProgrammering
 //            Console.WriteLine(result);
 
             //Console.WriteLine(CtoF(0));
-            //Console.WriteLine(CtoF(100));
-            //Console.WriteLine(CtoF(-300));{
+            Console.WriteLine(CtoF(100));
+            //Console.WriteLine(CtoF(-300));
 
             //Console.WriteLine(ElementaryOperations(3, 8));
 

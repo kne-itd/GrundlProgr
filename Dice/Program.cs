@@ -27,17 +27,20 @@ namespace Dice
             do
             {
                 countSixes = 0;
+                countTries++;
                 for (int i = 0; i < numberOfDice; i++)
                 {
                     int result = dice.Next(1, 7);
-                    countTries++;
-                    Console.Write($"{result} ");
+                    
+                    //debug
+                    //Console.Write($"{result} ");
                     if (result == 6)
                     {
                         countSixes++;
                     }
                 }
-                Console.WriteLine();
+                //debug
+                //Console.WriteLine();
             } while (countSixes < numberOfDice);
 
             Console.WriteLine($"Det tog {countTries} at slå {numberOfDice} seksere");
