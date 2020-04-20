@@ -13,7 +13,13 @@ namespace GrundlProgrammering
             }
             return a;
         }
-
+        /// <summary>
+        /// BOTH a AND b should be divisible by 2
+        /// OR BOTH a AND b should be divisible by 3
+        /// </summary>
+        /// <param name="a"></param>
+        /// <param name="b"></param>
+        /// <returns></returns>
         public static int DivisibleBy2Or3(int a, int b)
         {
             if (a % 2 == 0 && b % 2 == 0 ||
