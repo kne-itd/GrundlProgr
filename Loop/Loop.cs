@@ -51,6 +51,38 @@ namespace GrundlProgrammering
             return false;
         }
 
+        public static int[] FindPrimes(int max)
+        {
+            int[] primes = new int[max - 1];
+            int primesIndex = 0;
+            bool isPrime = false;
+            // dividend; start ved 2 og gå helt op mtil max
+            for (int i = 2; i <= max - 1; i++)
+            {
+                // antag at tallet et primtal - indtil det modsatte er påvist
+                isPrime = true;
+                // divisor: start ved 2 ( 1 er meningsløs) og gå op dit det halve af dividenden
+                for (int j = 2; j <= i / 2; j++)
+                {
+                    if (i % j == 0) // rest = 0 => tallet "går op"
+                    {
+                        isPrime = false;
+                        break;
+                    }
+                }
+                // primtalsantagelsen er ikke modbevist
+                if (isPrime)
+                {
+                    primes[primesIndex] = i;
+                    primesIndex++;
+                }
+            }
+
+            Array.Resize(ref primes, primesIndex);
+            
+            return primes;
+        }
+
         /// <summary>
         /// Method returns an array of all prime numbers below the given max
         /// 1. An array of consecutive integers from 2 through max is created
@@ -69,22 +101,30 @@ namespace GrundlProgrammering
         /// <returns>Array of primes</returns>
         public static int[] SieveOfEratosthenes(int max)
         {
+            // 1.
+            // List of prime-candidates ie. all integers from 2 (smallest prime) to max
             int[] initialList = new int[max];
             for (int i = 2; i < max; i++)
             {
                 initialList[i] = i;
             }
 
+            // 2.
+            // Start with smallest prime (2)
             for (int i = 2; i * i < max; i++)
             {
-                if (initialList[i] != 0)
+                if (initialList[i] != 0) // if not already marked(reset to 0)
                 {
+                    // 3.
+                    // Alle multiples of i arr marked (reset to 0)
                     for (int j = i * i; j < max; j += i)
                     {
                         initialList[j] = 0;
                     }
                 }
             }
+            // 5.
+            // prepare array of remaining, not-marked numbers (primes)
             int count = 0;
             foreach (int i in initialList)
             {
@@ -95,6 +135,7 @@ namespace GrundlProgrammering
             }
             int[] primes = new int[count];
             int key = 0;
+            // add all not-marked numbers to list of primes
             foreach (int i in initialList)
             {
                 if (i > 0)
@@ -209,6 +250,11 @@ namespace GrundlProgrammering
             //{
             //    Console.Write(number + " ");
             //}
+            foreach (int number in FindPrimes(30))
+            {
+                Console.Write(number + " ");
+            }
+            Console.Write("#");
 
             //Console.Write(MultiplicationTable());
 
