@@ -1,8 +1,8 @@
 ﻿using System;
 using Xunit;
-using Strings;
+using GrundlProgrammering;
 
-namespace Tests
+namespace GrundlProgrammering.Tests
 {
     public class StringTests
     {
@@ -14,8 +14,8 @@ namespace Tests
             //act
             const string input = "ABCD";
             const string sep = "^";
-            string output = Program.AddSeparator(input, sep);
-            string output2 = Program.AddSeparator("chocolate", "-");
+            string output = Strings.AddSeparator(input, sep);
+            string output2 = Strings.AddSeparator("chocolate", "-");
 
             //assert
             Assert.Equal("A^B^C^D", output);
@@ -29,8 +29,8 @@ namespace Tests
             string nonPal = "home";
             //act
             //assert
-            Assert.True(Program.IsPalindrome(pal));
-            Assert.False(Program.IsPalindrome(nonPal));
+            Assert.True(Strings.IsPalindrome(pal));
+            Assert.False(Strings.IsPalindrome(nonPal));
         }
         [Fact]
         public void LengthOfStringTest()
@@ -41,8 +41,8 @@ namespace Tests
 
             //act
             //assert
-            Assert.Equal(8, Program.LengthOfAString(string1));
-            Assert.Equal(9, Program.LengthOfAString(string2));
+            Assert.Equal(8, Strings.LengthOfAString(string1));
+            Assert.Equal(9, Strings.LengthOfAString(string2));
         }
         [Fact]
         public void StringInReverseOrderTest()
@@ -53,8 +53,8 @@ namespace Tests
             string input2 = "oe93 kr";
             string expected2 = "rk 39eo";
             //act
-            string output1 = Program.StringInReverseOrder(input);
-            string output2 = Program.StringInReverseOrder(input2);
+            string output1 = Strings.StringInReverseOrder(input);
+            string output2 = Strings.StringInReverseOrder(input2);
             //assert
             Assert.Equal(expected1, output1);
             Assert.Equal(expected2, output2);
@@ -68,8 +68,8 @@ namespace Tests
             string input2 = "OK";
             int expected2 = 1;
             //act
-            int out1 = Program.NumberOfWords(input1);
-            int out2 = Program.NumberOfWords(input2);
+            int out1 = Strings.NumberOfWords(input1);
+            int out2 = Strings.NumberOfWords(input2);
             //assert
             Assert.Equal(expected1, out1);
             Assert.Equal(expected2, out2);
@@ -83,8 +83,8 @@ namespace Tests
             string input2 = "A, B, C";
             string expected2 = "C B, A,";
             //act
-            string out1 = Program.RevertWordsOrder(input);
-            string out2 = Program.RevertWordsOrder(input2);
+            string out1 = Strings.RevertWordsOrder(input);
+            string out2 = Strings.RevertWordsOrder(input2);
             //assert
             Assert.Equal(expected1, out1);
             Assert.Equal(expected2, out2);
@@ -100,8 +100,8 @@ namespace Tests
             int expectes1 = 1;
             int expected2 = 0;
             //act
-            int actual1 = Program.HowManyOccurrences(inputString1, substring1);
-            int actual2 = Program.HowManyOccurrences(inputString2, substring2);
+            int actual1 = Strings.HowManyOccurrences(inputString1, substring1);
+            int actual2 = Strings.HowManyOccurrences(inputString2, substring2);
             //assert
             Assert.Equal(expectes1, actual1);
             Assert.Equal(expected2, actual2);
@@ -116,8 +116,8 @@ namespace Tests
             string expected2 = "wsoojhff42";
 
             //act
-            string actual1 = Program.SortCharactersDescending(input1);
-            string actual2 = Program.SortCharactersDescending(input2);
+            string actual1 = Strings.SortCharactersDescending(input1);
+            string actual2 = Strings.SortCharactersDescending(input2);
             //assert
             Assert.Equal(expected1, actual1);
             Assert.Equal(expected2, actual2);
@@ -132,8 +132,8 @@ namespace Tests
             string expected1 = "k4t3r10";
             string expected2 = "p153p371w3";
             //act
-            string actual1 = Program.CompressString(input1);
-            string actual2 = Program.CompressString(input2);
+            string actual1 = Strings.CompressString(input1);
+            string actual2 = Strings.CompressString(input2);
             //assert
             Assert.Equal(expected1, actual1);
             Assert.Equal(expected2, actual2);
