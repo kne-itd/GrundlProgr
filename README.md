@@ -1,2 +1,2 @@
 # GrundlProgr
-Grundlæggende Programmering 2002-01
+Grundlæggende Programmering 2020-01
